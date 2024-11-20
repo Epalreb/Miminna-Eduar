@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduar & Miminna</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(45deg, #ffadad, #ffd6a5);
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .flags {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .flag-container {
+            position: relative;
+            margin: 0 10px;
+        }
+        img {
+            width: 100px;
+            height: auto;
+            border: none;
+            box-shadow: none;
+        }
+        .flag-tooltip {
+            display: none;
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .flag-container:hover .flag-tooltip {
+            display: block;
+        }
+        .date {
+            margin-top: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            position: relative;
+        }
+        .date-tooltip {
+            display: none;
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+        .date:hover .date-tooltip {
+            display: block;
+        }
+        .love-image {
+            width: 300px;
+            height: auto;
+            margin-top: 30px;
+            border: none;
+            box-shadow: none;
+        }
+
+        /* Contenedor de texto con efecto de escritura */
+        .text-container {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30%; /* 30% del ancho de la pantalla */
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: left; /* Alineación del texto a la izquierda */
+        }
+
+        .typing-text {
+            font-size: 1.5rem;
+            color: #2c2c54; /* Azul oscuro profundo */
+            white-space: normal;
+            display: inline-block;
+            width: 100%;
+            overflow: hidden;
+            padding-right: 5px;
+            border-right: none; 
+            animation: typing 3.5s steps(80) 1s forwards, blink 0.7s step-end infinite;
+        }
+
+        .typing-text-line2 {
+            font-size: 1.5rem;
+            color: #2c2c54; /* Azul oscuro profundo */
+            white-space: normal;
+            display: inline-block;
+            width: 100%;
+            overflow: hidden;
+            padding-right: 5px;
+            border-right: none; 
+            animation: typing2 20s steps(150) 1s forwards, blink 0.7s step-end infinite;
+        }
+
+        .typing-text-line3 {
+            font-size: 1.5rem;
+            color: #2c2c54; /* Azul oscuro profundo */
+            white-space: normal;
+            display: inline-block;
+            width: 100%;
+            overflow: hidden;
+            padding-right: 5px;
+            border-right: none; 
+            animation: typing3 10s steps(70) 1s forwards, blink 0.7s step-end infinite;
+        }
+
+        /* Animación para simular el efecto de teclear */
+        @keyframes typing {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes typing2 {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes typing3 {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* Animación para el parpadeo del cursor */
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .rocket-image {
+            width: 50px;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        /* Estilos para la galería de fotos a la derecha */
+        .photo-gallery {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            flex-wrap: wrap; /* Permite el salto de línea */
+            gap: 20px;
+            max-width: 300px; /* Limita el tamaño máximo de la galería */
+            justify-content: space-between; /* Para que las imágenes se distribuyan entre dos columnas */
+        }
+
+        .photo-gallery img {
+            width: 45%; /* Ajusta el tamaño de las imágenes para que se dividan en dos columnas */
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid #fff;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Eggar & Minesota</h1>
+
+        <!-- Contenedor de banderas -->
+        <div class="flags">
+            <div class="flag-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Peru.svg" alt="Flag of Peru">
+                <div class="flag-tooltip">Trujillo, 22 de Enero</div>
+            </div>
+            <div class="flag-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg" alt="Flag of Brazil">
+                <div class="flag-tooltip">Fortaleza, 29 de Enero</div>
+            </div>
+        </div>
+
+        <!-- Fecha con tooltip -->
+        <div class="date">
+            20.11
+            <div class="date-tooltip" id="daysCounter"></div>
+        </div>
+
+        <!-- Imagen de amor -->
+        <img class="love-image" src="Tarjeta%20Infinita.png" alt="Love Illustration">
+
+        <!-- Contenedor de texto apareciendo palabra por palabra -->
+        <div class="text-container">
+            <!-- Primera línea (Oi minna) -->
+            <div class="typing-text" id="typingText1"></div>
+            <!-- Segunda línea -->
+            <div class="typing-text-line2" id="typingText2"></div>
+            <!-- Tercera línea (Hasta el infinito y más allá) -->
+            <div class="typing-text-line3" id="typingText3"></div>
+        </div>
+
+        <!-- Galería de fotos -->
+        <div class="photo-gallery">
+            <img src="Foto1.jpg" alt="Foto 1">
+            <img src="Foto2.jpg" alt="Foto 2">
+            <img src="Foto3.jpg" alt="Foto 3">
+            <img src="Foto4.jpg" alt="Foto 4">
+            <img src="Foto5.jpg" alt="Foto 5">
+        </div>
+    </div>
+
+    <script>
+        // Textos para la animación
+        const text1 = "Oi Miminna, ";
+        const text2 = "Queria escribirte unas palabras amor, queria que supieras cuan importante eres para mi y cuan importante son nuestras fechas. Aun tengo en mi mente ese recuerdo tuyo saliendo del aeropuerto y lo nervioso que estaba, no sabia cuan significante seria ese momento. Luego de ahi y sentir tus manos juntos a las mias mientras ibamos en el taxi, sentir tu pulso. Desde ahi y solo ahi me senti nervioso no sabia ni tenia idea de lo feliz que me ibas a hacer. Minna aprendi a amarte, a valorarte,y esto tambien es para agradecerte por lo feliz que soy a tu lado, tu sonrisa me pone feliz, tenerte me hace feliz, saber que tengo a mi compañera de vida me da una tranquilidad infinita. Tu eres aquella persona que Dios, el destino puso en mi camino para poder seguir avanzando en la vida. Obrigado por todo amor, obrigado por estos 3 años que no nos dejamos, y no nos dejaremos. Yo sostengo tu mano y tu sostienes la mia y asi para siempre.";
+        const text3 = "E te amo con todo mi corazon, por todo lo que haces por mi y por todo lo que juntos logramos. Hasta el infinito y más allá.";
+
+        function typeLetters(container, text, delay) {
+            let i = 0;
+            function typeLetter() {
+                if (i < text.length) {
+                    container.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeLetter, 50);
+                }
+            }
+            setTimeout(typeLetter, delay);
+        }
+
+        // Mostrar texto en las líneas
+        typeLetters(document.getElementById("typingText1"), text1, 1000);
+        typeLetters(document.getElementById("typingText2"), text2, 3000);
+        typeLetters(document.getElementById("typingText3"), text3, 54000);
+
+        // Contador de días
+        let days = 19;
+        setInterval(function () {
+            document.getElementById("daysCounter").innerText = `Días: ${days++}`;
+        }, 1000);
+    </script>
+</body>
+</html>
